@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WFM Analyst Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#1F4E79;--blue:#2E75B6;--lb:#BDD7EE;--green:#375623;--lg:#E2EFDA;--amber:#843C0C;--la:#FCE4D6;--bg:#F8F7F4;--white:#fff;--text:#1a1a1a;--muted:#6b6b6b;--border:#e0ddd6;}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);font-size:16px;line-height:1.7;}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(248,247,244,0.96);backdrop-filter:blur(8px);border-bottom:1px solid var(--border);padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:60px;}
+.nav-logo{font-family:'DM Serif Display',serif;font-size:1.1rem;color:var(--navy);font-weight:bold;}
+.nav-links{display:flex;gap:2rem;list-style:none;}
+.nav-links a{text-decoration:none;color:var(--muted);font-size:.875rem;font-weight:500;}
+.nav-links a:hover{color:var(--navy);}
+.nav-cta{background:var(--navy);color:white;border:none;padding:.5rem 1.25rem;border-radius:4px;font-family:'DM Sans',sans-serif;font-size:.875rem;cursor:pointer;text-decoration:none;font-weight:500;}
+
+/* HERO */
+.hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;padding-top:60px;}
+.hero-left{background:var(--navy);padding:5rem 4rem;display:flex;flex-direction:column;justify-content:center;}
+.hero-tag{display:inline-block;background:rgba(255,255,255,0.15);color:var(--lb);font-size:.75rem;letter-spacing:.1em;padding:.35rem 1rem;border-radius:20px;margin-bottom:1.5rem;width:fit-content;}
+.hero-name{font-family:'DM Serif Display',serif;font-size:3.2rem;line-height:1.1;color:white;margin-bottom:.5rem;}
+.hero-title{font-size:1rem;color:var(--lb);font-weight:300;margin-bottom:2rem;}
+.hero-desc{color:rgba(255,255,255,.75);font-size:.9rem;line-height:1.8;margin-bottom:2.5rem;max-width:420px;}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap;}
+.btn-primary{background:white;color:var(--navy);padding:.75rem 1.75rem;border-radius:4px;text-decoration:none;font-weight:500;font-size:.9rem;}
+.btn-outline{border:1px solid rgba(255,255,255,.35);color:white;padding:.75rem 1.75rem;border-radius:4px;text-decoration:none;font-weight:500;font-size:.9rem;}
+.hero-right{background:var(--white);padding:5rem 3.5rem;display:flex;flex-direction:column;justify-content:center;}
+.stats-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:2.5rem;}
+.stat-card{background:var(--bg);border-radius:8px;padding:1.5rem;border-left:3px solid var(--navy);}
+.stat-num{font-family:'DM Serif Display',serif;font-size:2.5rem;color:var(--navy);line-height:1;margin-bottom:.25rem;}
+.stat-label{font-size:.8rem;color:var(--muted);font-weight:500;}
+.tools-label{font-size:.75rem;color:var(--muted);font-weight:500;letter-spacing:.08em;margin-bottom:.75rem;}
+.tools-chips{display:flex;flex-wrap:wrap;gap:.5rem;}
+.chip{background:var(--bg);border:1px solid var(--border);color:var(--text);font-size:.8rem;padding:.3rem .85rem;border-radius:20px;font-weight:500;}
+.chip.blue{background:#EBF3FB;border-color:var(--lb);color:var(--navy);}
+
+/* SECTIONS */
+section{padding:5rem 0;}
+.container{max-width:1100px;margin:0 auto;padding:0 2rem;}
+.section-label{font-size:.75rem;letter-spacing:.12em;color:var(--blue);font-weight:500;margin-bottom:.75rem;}
+.section-title{font-family:'DM Serif Display',serif;font-size:2.25rem;color:var(--text);margin-bottom:1rem;}
+.section-sub{color:var(--muted);max-width:500px;font-size:.95rem;}
+
+/* SERVICES */
+.services{background:var(--white);}
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3rem;}
+.service-card{border:1px solid var(--border);border-radius:10px;padding:2rem;background:var(--bg);transition:transform .2s;}
+.service-card:hover{transform:translateY(-4px);}
+.service-icon{width:44px;height:44px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;margin-bottom:1.25rem;background:#EBF3FB;}
+.service-name{font-weight:500;font-size:1rem;margin-bottom:.5rem;}
+.service-desc{font-size:.875rem;color:var(--muted);line-height:1.7;}
+
+/* PORTFOLIO */
+.portfolio{background:var(--bg);}
+.portfolio-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3rem;}
+.portfolio-card{background:var(--white);border-radius:10px;overflow:hidden;border:1px solid var(--border);transition:transform .2s;}
+.portfolio-card:hover{transform:translateY(-4px);}
+.portfolio-thumb{height:160px;display:flex;align-items:center;justify-content:center;position:relative;}
+.p1 .portfolio-thumb{background:var(--navy);}
+.p2 .portfolio-thumb{background:var(--green);}
+.p3 .portfolio-thumb{background:var(--amber);}
+.thumb-icon{font-size:3.5rem;}
+.thumb-label{position:absolute;bottom:.75rem;right:.75rem;background:rgba(255,255,255,.2);color:white;font-size:.7rem;padding:.2rem .6rem;border-radius:10px;font-weight:500;}
+.portfolio-info{padding:1.5rem;}
+.portfolio-num{font-size:.7rem;color:var(--muted);font-weight:500;letter-spacing:.08em;margin-bottom:.4rem;}
+.portfolio-name{font-weight:500;font-size:1rem;margin-bottom:.5rem;}
+.portfolio-desc{font-size:.825rem;color:var(--muted);line-height:1.6;margin-bottom:1rem;}
+.portfolio-tags{display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:1rem;}
+.ptag{font-size:.7rem;padding:.2rem .6rem;border-radius:10px;font-weight:500;}
+.ptag.navy{background:#EBF3FB;color:var(--navy);}
+.ptag.green{background:var(--lg);color:var(--green);}
+.ptag.amber{background:var(--la);color:var(--amber);}
+
+/* DOWNLOAD BUTTONS */
+.dl-btn{display:block;width:100%;text-align:center;padding:.65rem 1rem;border-radius:6px;font-size:.875rem;font-weight:500;text-decoration:none;cursor:pointer;}
+.dl-btn:hover{opacity:.85;}
+.dl-navy{background:var(--navy);color:white;}
+.dl-green{background:var(--green);color:white;}
+.dl-amber{background:var(--amber);color:white;}
+
+/* EXPERIENCE */
+.experience{background:var(--white);}
+.exp-card{border:1px solid var(--border);border-radius:10px;padding:2.5rem;margin-top:3rem;display:grid;grid-template-columns:1fr 2fr;gap:3rem;background:var(--bg);}
+.exp-company{font-family:'DM Serif Display',serif;font-size:1.75rem;color:var(--navy);margin-bottom:.25rem;}
+.exp-role{font-size:.95rem;color:var(--blue);font-weight:500;margin-bottom:.5rem;}
+.exp-date{display:inline-block;background:var(--lb);color:var(--navy);font-size:.75rem;font-weight:500;padding:.3rem .85rem;border-radius:20px;margin-bottom:1.5rem;}
+.exp-highlight{background:var(--navy);color:white;border-radius:8px;padding:1.25rem;}
+.exp-highlight-num{font-family:'DM Serif Display',serif;font-size:2rem;}
+.exp-highlight-label{font-size:.75rem;opacity:.75;margin-top:.2rem;}
+.exp-section-title{font-weight:500;font-size:.875rem;color:var(--muted);letter-spacing:.06em;margin-bottom:1rem;margin-top:1.5rem;}
+.exp-section-title:first-child{margin-top:0;}
+.exp-list{list-style:none;}
+.exp-list li{padding:.6rem 0;border-bottom:1px solid var(--border);font-size:.9rem;display:flex;align-items:flex-start;gap:.75rem;}
+.exp-list li:last-child{border-bottom:none;}
+.exp-list li::before{content:'→';color:var(--blue);font-weight:500;flex-shrink:0;}
+.tools-used{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1rem;}
+
+/* CONTACT */
+.contact{background:var(--navy);}
+.contact .section-label{color:var(--lb);}
+.contact .section-title{color:white;}
+.contact .section-sub{color:rgba(255,255,255,.65);}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;margin-top:3rem;align-items:start;}
+.contact-items{display:flex;flex-direction:column;gap:1rem;}
+.contact-item{display:flex;align-items:center;gap:1rem;background:rgba(255,255,255,.08);border-radius:8px;padding:1rem 1.25rem;}
+.contact-icon{width:40px;height:40px;background:rgba(255,255,255,.12);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0;}
+.contact-label{font-size:.75rem;color:rgba(255,255,255,.5);margin-bottom:.15rem;}
+.contact-val{font-size:.9rem;color:white;font-weight:500;}
+.available-badge{display:inline-flex;align-items:center;gap:.5rem;background:rgba(55,86,35,.4);border:1px solid rgba(55,86,35,.6);color:#90EE90;font-size:.8rem;padding:.5rem 1rem;border-radius:20px;margin-bottom:1.5rem;}
+.available-dot{width:8px;height:8px;background:#90EE90;border-radius:50%;animation:pulse 2s infinite;}
+@keyframes pulse{0%,100%{opacity:1;}50%{opacity:.4;}}
+.cta-box{background:rgba(255,255,255,.06);border-radius:10px;padding:2rem;border:1px solid rgba(255,255,255,.1);}
+.cta-title{font-family:'DM Serif Display',serif;font-size:1.5rem;color:white;margin-bottom:.75rem;}
+.cta-desc{color:rgba(255,255,255,.65);font-size:.9rem;margin-bottom:1.5rem;line-height:1.7;}
+.cta-links{display:flex;flex-direction:column;gap:.75rem;}
+.cta-link{display:flex;align-items:center;gap:.75rem;background:white;color:var(--navy);padding:.85rem 1.25rem;border-radius:6px;text-decoration:none;font-weight:500;font-size:.875rem;}
+.cta-link:hover{background:var(--lb);}
+footer{background:#111827;color:rgba(255,255,255,.4);text-align:center;padding:1.5rem;font-size:.8rem;}
+@media(max-width:768px){.hero{grid-template-columns:1fr;}.services-grid,.portfolio-grid{grid-template-columns:1fr;}.exp-card{grid-template-columns:1fr;}.contact-grid{grid-template-columns:1fr;}.nav-links{display:none;}}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">WFM Portfolio</div>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#portfolio">Portfolio</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Hire Me</a>
+</nav>
+
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-tag">Available for Freelance Projects</div>
+    <h1 class="hero-name">Workforce<br>Management<br>Analyst</h1>
+    <p class="hero-title">Call Center Forecasting · Scheduling · SLA Reporting</p>
+    <p class="hero-desc">Helping call centers and BPOs make smarter staffing decisions through accurate forecasting, clean dashboards, and practical WFM solutions — backed by real daily experience at Concentrix.</p>
+    <div class="hero-btns">
+      <a href="#portfolio" class="btn-primary">View Portfolio</a>
+      <a href="#contact" class="btn-outline">Get in Touch</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="stats-grid">
+      <div class="stat-card"><div class="stat-num">2+</div><div class="stat-label">Years WFM Experience</div></div>
+      <div class="stat-card"><div class="stat-num">3</div><div class="stat-label">Portfolio Projects</div></div>
+      <div class="stat-card"><div class="stat-num">80%</div><div class="stat-label">SLA Target Expertise</div></div>
+      <div class="stat-card"><div class="stat-num">5+</div><div class="stat-label">Tools Mastered</div></div>
+    </div>
+    <div class="tools-label">TOOLS & PLATFORMS</div>
+    <div class="tools-chips">
+      <span class="chip blue">Microsoft Excel</span>
+      <span class="chip blue">Power BI</span>
+      <span class="chip blue">Google Sheets</span>
+      <span class="chip blue">MySQL</span>
+      <span class="chip">Forecasting</span>
+      <span class="chip">SLA Reporting</span>
+      <span class="chip">Shift Scheduling</span>
+      <span class="chip">KPI Dashboards</span>
+    </div>
+  </div>
+</section>
+
+<section class="services" id="services">
+  <div class="container">
+    <div class="section-label">WHAT I OFFER</div>
+    <h2 class="section-title">Services</h2>
+    <p class="section-sub">End-to-end WFM solutions for call centers and BPOs of all sizes.</p>
+    <div class="services-grid">
+      <div class="service-card"><div class="service-icon">📅</div><div class="service-name">Staffing Forecast Models</div><div class="service-desc">Weekly & monthly capacity planning with dynamic Excel models. Calculates required agents based on volume, AHT, shrinkage & occupancy.</div></div>
+      <div class="service-card"><div class="service-icon">📊</div><div class="service-name">SLA & KPI Dashboards</div><div class="service-desc">Professional dashboards tracking SLA %, AHT, Abandonment Rate & Occupancy with trend indicators and management-ready charts.</div></div>
+      <div class="service-card"><div class="service-icon">🗓️</div><div class="service-name">Shift Schedule Tracker</div><div class="service-desc">Color-coded weekly rosters for your agent team with built-in coverage gap analysis — see understaffed days before the week begins.</div></div>
+      <div class="service-card"><div class="service-icon">🗄️</div><div class="service-name">MySQL Data Extraction</div><div class="service-desc">Pull and clean raw call center data directly from MySQL databases — complete end-to-end reporting from database to dashboard.</div></div>
+      <div class="service-card"><div class="service-icon">📈</div><div class="service-name">Capacity Planning Reports</div><div class="service-desc">Long-term headcount planning and monthly management reports that help leadership make informed hiring and scheduling decisions.</div></div>
+      <div class="service-card"><div class="service-icon">⚙️</div><div class="service-name">WFM Process Setup</div><div class="service-desc">Help startups and small BPOs build their WFM processes from scratch — templates, reporting structure, and operational workflows.</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="portfolio" id="portfolio">
+  <div class="container">
+    <div class="section-label">MY WORK</div>
+    <h2 class="section-title">Portfolio Projects</h2>
+    <p class="section-sub">Three ready-to-use WFM tools built with real call center data and live Excel formulas.</p>
+    <div class="portfolio-grid">
+
+      <div class="portfolio-card p1">
+        <div class="portfolio-thumb">
+          <div class="thumb-icon">📅</div>
+          <div class="thumb-label">Excel · 4 Sheets</div>
+        </div>
+        <div class="portfolio-info">
+          <div class="portfolio-num">PROJECT 01</div>
+          <div class="portfolio-name">Staffing Forecast Model</div>
+          <div class="portfolio-desc">Dynamic weekly & monthly staffing model. Auto-calculates required agents from volume, AHT, shrinkage & occupancy inputs.</div>
+          <div class="portfolio-tags">
+            <span class="ptag navy">Forecasting</span>
+            <span class="ptag navy">Excel</span>
+            <span class="ptag navy">Capacity Planning</span>
+          </div>
+          <a href="https://analystdeba.github.io/P1_Staffing_Forecast_Model.xlsx" class="dl-btn dl-navy">⬇ Download File</a>
+        </div>
+      </div>
+
+      <div class="portfolio-card p2">
+        <div class="portfolio-thumb">
+          <div class="thumb-icon">📊</div>
+          <div class="thumb-label">Excel · Power BI</div>
+        </div>
+        <div class="portfolio-info">
+          <div class="portfolio-num">PROJECT 02</div>
+          <div class="portfolio-name">SLA & KPI Dashboard</div>
+          <div class="portfolio-desc">12-month KPI tracker with SLA %, AHT, Abandonment & Occupancy. Color-coded status flags and trend indicators included.</div>
+          <div class="portfolio-tags">
+            <span class="ptag green">SLA Tracking</span>
+            <span class="ptag green">Power BI</span>
+            <span class="ptag green">KPI Reporting</span>
+          </div>
+          <a href="https://analystdeba.github.io/P2_SLA_KPI_Dashboard.xlsx" class="dl-btn dl-green">⬇ Download File</a>
+        </div>
+      </div>
+
+      <div class="portfolio-card p3">
+        <div class="portfolio-thumb">
+          <div class="thumb-icon">🗓️</div>
+          <div class="thumb-label">Excel · 2 Sheets</div>
+        </div>
+        <div class="portfolio-info">
+          <div class="portfolio-num">PROJECT 03</div>
+          <div class="portfolio-name">Shift Schedule Tracker</div>
+          <div class="portfolio-desc">Color-coded weekly roster for 10+ agents with M/A/N/O shifts, auto coverage count, gap analysis, and summary chart.</div>
+          <div class="portfolio-tags">
+            <span class="ptag amber">Scheduling</span>
+            <span class="ptag amber">Roster</span>
+            <span class="ptag amber">Gap Analysis</span>
+          </div>
+          <a href="https://analystdeba.github.io/P3_Shift_Schedule_Tracker.xlsx" class="dl-btn dl-amber">⬇ Download File</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="experience" id="experience">
+  <div class="container">
+    <div class="section-label">BACKGROUND</div>
+    <h2 class="section-title">Work Experience</h2>
+    <div class="exp-card">
+      <div>
+        <div class="exp-company">Concentrix</div>
+        <div class="exp-role">Workforce Management Analyst</div>
+        <div class="exp-date">May 2023 — Present</div>
+        <div class="exp-highlight">
+          <div class="exp-highlight-num">2+</div>
+          <div class="exp-highlight-label">Years of hands-on WFM experience in a live call center environment</div>
+        </div>
+      </div>
+      <div>
+        <div class="exp-section-title">KEY RESPONSIBILITIES</div>
+        <ul class="exp-list">
+          <li>Weekly & monthly staffing forecasts based on volume, AHT & shrinkage</li>
+          <li>Agent shift scheduling across morning, afternoon & night operations</li>
+          <li>SLA, AHT, Abandonment Rate & Occupancy tracking and reporting</li>
+          <li>Intraday real-time monitoring and staffing adjustments</li>
+          <li>Power BI and Excel dashboards for management reporting</li>
+          <li>MySQL data extraction and cleaning for WFM reports</li>
+        </ul>
+        <div class="exp-section-title">TOOLS USED</div>
+        <div class="tools-used">
+          <span class="chip blue">Microsoft Excel</span>
+          <span class="chip blue">Power BI</span>
+          <span class="chip blue">Google Sheets</span>
+          <span class="chip blue">MySQL</span>
+          <span class="chip">WFM Platforms</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="container">
+    <div class="section-label">GET IN TOUCH</div>
+    <h2 class="section-title">Let's Work Together</h2>
+    <p class="section-sub">Available for freelance WFM projects remotely. Fast response guaranteed.</p>
+    <div class="contact-grid">
+      <div>
+        <div class="available-badge"><div class="available-dot"></div>Available for new projects</div>
+        <div class="contact-items">
+          <div class="contact-item"><div class="contact-icon">📧</div><div><div class="contact-label">EMAIL</div><div class="contact-val">your.email@gmail.com</div></div></div>
+          <div class="contact-item"><div class="contact-icon">📍</div><div><div class="contact-label">LOCATION</div><div class="contact-val">Bengaluru, India · Remote Available</div></div></div>
+          <div class="contact-item"><div class="contact-icon">⚡</div><div><div class="contact-label">RESPONSE TIME</div><div class="contact-val">Within 24 hours</div></div></div>
+        </div>
+      </div>
+      <div class="cta-box">
+        <div class="cta-title">Find Me On</div>
+        <div class="cta-desc">Hire me directly on Upwork or Fiverr for your WFM reporting, forecasting, or scheduling project.</div>
+        <div class="cta-links">
+          <a href="https://www.upwork.com" target="_blank" class="cta-link">💼 Hire me on Upwork</a>
+          <a href="https://www.fiverr.com" target="_blank" class="cta-link">🟢 Order on Fiverr</a>
+          <a href="https://www.linkedin.com" target="_blank" class="cta-link">🔗 Connect on LinkedIn</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer><p>© 2026 WFM Analyst Portfolio · Bengaluru, India · Built for freelance clients worldwide</p></footer>
+
+</body>
+</html>
