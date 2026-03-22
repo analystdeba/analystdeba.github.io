@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Debasis Saha | Data Analyst Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#020817;--bg2:#0F172A;--bg3:#1E293B;
+  --border:#1E293B;--border2:#334155;
+  --text:#F8FAFC;--muted:#94A3B8;--dim:#475569;
+  --blue:#3B82F6;--blue2:#60A5FA;--blue3:#DBEAFE;
+  --purple:#8B5CF6;--purple2:#A78BFA;
+  --green:#10B981;--green2:#34D399;
+  --pink:#EC4899;--pink2:#F472B6;
+  --amber:#F59E0B;--amber2:#FCD34D;
+  --teal:#06B6D4;--teal2:#22D3EE;
+  --orange:#F97316;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Space Grotesk',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;line-height:1.6;}
+
+/* GRID BACKGROUND */
+body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(59,130,246,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(59,130,246,0.03) 1px,transparent 1px);background-size:60px 60px;pointer-events:none;z-index:0;}
+
+/* GLOW ORBS */
+.orbs{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden;}
+.orb{position:absolute;border-radius:50%;filter:blur(100px);animation:drift 12s ease-in-out infinite;}
+.o1{width:500px;height:500px;background:rgba(59,130,246,0.08);top:-150px;left:-100px;animation-delay:0s;}
+.o2{width:400px;height:400px;background:rgba(139,92,246,0.07);top:40%;right:-100px;animation-delay:3s;}
+.o3{width:350px;height:350px;background:rgba(16,185,129,0.06);bottom:0;left:25%;animation-delay:6s;}
+.o4{width:300px;height:300px;background:rgba(236,72,153,0.05);bottom:20%;right:10%;animation-delay:2s;}
+@keyframes drift{0%,100%{transform:translate(0,0);}33%{transform:translate(20px,-20px);}66%{transform:translate(-15px,15px);}}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 2.5rem;background:rgba(2,8,23,0.8);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);}
+.logo{font-family:'JetBrains Mono',monospace;font-size:1rem;color:var(--blue2);display:flex;align-items:center;gap:.5rem;}
+.logo-bracket{color:var(--purple2);font-size:1.1rem;}
+.nav-links{display:flex;gap:2.5rem;list-style:none;}
+.nav-links a{text-decoration:none;color:var(--muted);font-size:.85rem;font-weight:500;transition:color .2s;font-family:'JetBrains Mono',monospace;}
+.nav-links a:hover{color:var(--blue2);}
+.nav-cta{background:transparent;border:1px solid var(--blue);color:var(--blue2);padding:.45rem 1.25rem;border-radius:6px;text-decoration:none;font-size:.85rem;font-weight:500;font-family:'JetBrains Mono',monospace;transition:all .3s;}
+.nav-cta:hover{background:rgba(59,130,246,0.1);box-shadow:0 0 15px rgba(59,130,246,0.2);}
+
+/* HERO */
+.hero{min-height:100vh;display:grid;grid-template-columns:55% 45%;padding-top:64px;position:relative;z-index:1;}
+.hero-left{padding:5rem 3rem 4rem 4rem;display:flex;flex-direction:column;justify-content:center;}
+.code-tag{font-family:'JetBrains Mono',monospace;font-size:.75rem;color:var(--purple2);margin-bottom:1rem;opacity:.8;}
+.hero-name{font-size:4rem;font-weight:700;line-height:1.05;margin-bottom:1rem;}
+.hero-name .n1{display:block;color:var(--text);}
+.hero-name .n2{display:block;font-family:'JetBrains Mono',monospace;font-size:2.2rem;background:linear-gradient(90deg,var(--blue2),var(--purple2),var(--pink2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-top:.25rem;}
+.hero-role{font-family:'JetBrains Mono',monospace;font-size:.95rem;color:var(--muted);margin-bottom:.75rem;}
+.hero-role .cursor{color:var(--blue2);animation:blink 1s infinite;}
+@keyframes blink{0%,100%{opacity:1;}50%{opacity:0;}}
+.hero-badges{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1.5rem;}
+.badge{font-family:'JetBrains Mono',monospace;font-size:.72rem;padding:.3rem .8rem;border-radius:4px;border:1px solid;font-weight:500;}
+.badge.b{background:rgba(59,130,246,.08);border-color:rgba(59,130,246,.25);color:var(--blue2);}
+.badge.p{background:rgba(139,92,246,.08);border-color:rgba(139,92,246,.25);color:var(--purple2);}
+.badge.g{background:rgba(16,185,129,.08);border-color:rgba(16,185,129,.25);color:var(--green2);}
+.badge.t{background:rgba(6,182,212,.08);border-color:rgba(6,182,212,.25);color:var(--teal2);}
+.badge.pk{background:rgba(236,72,153,.08);border-color:rgba(236,72,153,.25);color:var(--pink2);}
+.badge.a{background:rgba(245,158,11,.08);border-color:rgba(245,158,11,.25);color:var(--amber2);}
+.hero-desc{color:var(--muted);font-size:.93rem;line-height:1.8;margin-bottom:2rem;max-width:480px;}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap;}
+.btn-p{background:var(--blue);color:white;padding:.75rem 1.75rem;border-radius:6px;text-decoration:none;font-weight:600;font-size:.9rem;transition:all .3s;box-shadow:0 0 20px rgba(59,130,246,.3);}
+.btn-p:hover{background:var(--blue2);transform:translateY(-2px);box-shadow:0 0 30px rgba(59,130,246,.5);}
+.btn-o{border:1px solid var(--border2);color:var(--text);padding:.75rem 1.75rem;border-radius:6px;text-decoration:none;font-weight:500;font-size:.9rem;transition:all .3s;}
+.btn-o:hover{border-color:var(--blue);color:var(--blue2);transform:translateY(-2px);}
+
+/* CODE TERMINAL */
+.hero-right{padding:4rem 3rem 4rem 2rem;display:flex;align-items:center;justify-content:center;}
+.terminal{background:var(--bg2);border:1px solid var(--border);border-radius:12px;width:100%;max-width:460px;overflow:hidden;box-shadow:0 0 40px rgba(0,0,0,.5);}
+.term-header{background:var(--bg3);padding:.75rem 1rem;display:flex;align-items:center;gap:.5rem;border-bottom:1px solid var(--border);}
+.term-dot{width:12px;height:12px;border-radius:50%;}
+.td1{background:#FF5F56;} .td2{background:#FFBD2E;} .td3{background:#27C93F;}
+.term-title{font-family:'JetBrains Mono',monospace;font-size:.75rem;color:var(--dim);margin-left:.5rem;}
+.term-body{padding:1.5rem;font-family:'JetBrains Mono',monospace;font-size:.82rem;line-height:2;}
+.t-comment{color:var(--dim);}
+.t-keyword{color:var(--purple2);}
+.t-fn{color:var(--blue2);}
+.t-str{color:var(--green2);}
+.t-num{color:var(--amber2);}
+.t-var{color:var(--pink2);}
+.t-out{color:var(--teal2);}
+.t-line{display:block;padding:.1rem 0;}
+.term-stats{display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin-top:1.25rem;padding-top:1.25rem;border-top:1px solid var(--border);}
+.ts{background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:.75rem;text-align:center;}
+.ts-val{font-family:'JetBrains Mono',monospace;font-size:1.4rem;font-weight:600;}
+.ts-lbl{font-size:.7rem;color:var(--muted);margin-top:.15rem;}
+.ts1 .ts-val{color:var(--blue2);}
+.ts2 .ts-val{color:var(--purple2);}
+.ts3 .ts-val{color:var(--green2);}
+.ts4 .ts-val{color:var(--pink2);}
+
+/* SECTIONS */
+section{padding:6rem 0;position:relative;z-index:1;}
+.container{max-width:1120px;margin:0 auto;padding:0 2.5rem;}
+.sec-eyebrow{font-family:'JetBrains Mono',monospace;font-size:.72rem;color:var(--blue2);letter-spacing:.15em;margin-bottom:.6rem;text-transform:uppercase;}
+.sec-title{font-size:2.4rem;font-weight:700;line-height:1.15;margin-bottom:.75rem;}
+.sec-title span{background:linear-gradient(90deg,var(--blue2),var(--purple2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.sec-sub{color:var(--muted);font-size:.93rem;max-width:520px;}
+
+/* SKILLS */
+.skills-bg{background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
+.skills-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-top:3rem;}
+.skill-card{background:var(--bg);border:1px solid var(--border);border-radius:12px;padding:1.75rem;transition:all .3s;cursor:default;position:relative;overflow:hidden;}
+.skill-card::after{content:'';position:absolute;inset:0;opacity:0;transition:opacity .3s;border-radius:12px;}
+.skill-card:hover{transform:translateY(-5px);}
+.skill-card:hover::after{opacity:1;}
+.sk1:hover{border-color:rgba(59,130,246,.4);box-shadow:0 8px 30px rgba(59,130,246,.1);}
+.sk1::after{background:linear-gradient(135deg,rgba(59,130,246,.05),transparent);}
+.sk2:hover{border-color:rgba(139,92,246,.4);box-shadow:0 8px 30px rgba(139,92,246,.1);}
+.sk2::after{background:linear-gradient(135deg,rgba(139,92,246,.05),transparent);}
+.sk3:hover{border-color:rgba(16,185,129,.4);box-shadow:0 8px 30px rgba(16,185,129,.1);}
+.sk3::after{background:linear-gradient(135deg,rgba(16,185,129,.05),transparent);}
+.sk4:hover{border-color:rgba(236,72,153,.4);box-shadow:0 8px 30px rgba(236,72,153,.1);}
+.sk4::after{background:linear-gradient(135deg,rgba(236,72,153,.05),transparent);}
+.sk5:hover{border-color:rgba(6,182,212,.4);box-shadow:0 8px 30px rgba(6,182,212,.1);}
+.sk5::after{background:linear-gradient(135deg,rgba(6,182,212,.05),transparent);}
+.sk6:hover{border-color:rgba(245,158,11,.4);box-shadow:0 8px 30px rgba(245,158,11,.1);}
+.sk6::after{background:linear-gradient(135deg,rgba(245,158,11,.05),transparent);}
+.skill-icon{font-size:2rem;margin-bottom:1rem;}
+.skill-title{font-weight:600;font-size:1rem;margin-bottom:.4rem;}
+.skill-desc{font-size:.83rem;color:var(--muted);line-height:1.65;margin-bottom:.9rem;}
+.skill-tags{display:flex;flex-wrap:wrap;gap:.4rem;}
+.stag{font-family:'JetBrains Mono',monospace;font-size:.68rem;padding:.2rem .6rem;border-radius:4px;border:1px solid;}
+.sk1 .stag{background:rgba(59,130,246,.06);border-color:rgba(59,130,246,.2);color:var(--blue2);}
+.sk2 .stag{background:rgba(139,92,246,.06);border-color:rgba(139,92,246,.2);color:var(--purple2);}
+.sk3 .stag{background:rgba(16,185,129,.06);border-color:rgba(16,185,129,.2);color:var(--green2);}
+.sk4 .stag{background:rgba(236,72,153,.06);border-color:rgba(236,72,153,.2);color:var(--pink2);}
+.sk5 .stag{background:rgba(6,182,212,.06);border-color:rgba(6,182,212,.2);color:var(--teal2);}
+.sk6 .stag{background:rgba(245,158,11,.06);border-color:rgba(245,158,11,.2);color:var(--amber2);}
+
+/* PORTFOLIO */
+.portfolio-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3rem;}
+.pcard{background:var(--bg2);border:1px solid var(--border);border-radius:14px;overflow:hidden;transition:all .3s;}
+.pcard:hover{transform:translateY(-8px);}
+.pp1:hover{border-color:rgba(59,130,246,.5);box-shadow:0 20px 50px rgba(59,130,246,.1);}
+.pp2:hover{border-color:rgba(16,185,129,.5);box-shadow:0 20px 50px rgba(16,185,129,.1);}
+.pp3:hover{border-color:rgba(139,92,246,.5);box-shadow:0 20px 50px rgba(139,92,246,.1);}
+.pthumb{height:175px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;}
+.pp1 .pthumb{background:linear-gradient(135deg,#0C1445,#1E3A8A);}
+.pp2 .pthumb{background:linear-gradient(135deg,#064E3B,#065F46);}
+.pp3 .pthumb{background:linear-gradient(135deg,#2E1065,#4C1D95);}
+.pthumb-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.03) 1px,transparent 1px);background-size:25px 25px;}
+.pthumb-icon{font-size:3.2rem;position:relative;z-index:1;filter:drop-shadow(0 4px 15px rgba(0,0,0,.5));transition:transform .3s;}
+.pcard:hover .pthumb-icon{transform:scale(1.12) translateY(-5px);}
+.pthumb-chip{position:absolute;bottom:.65rem;right:.65rem;font-family:'JetBrains Mono',monospace;background:rgba(0,0,0,.5);backdrop-filter:blur(8px);color:rgba(255,255,255,.8);font-size:.65rem;padding:.22rem .65rem;border-radius:4px;border:1px solid rgba(255,255,255,.1);}
+.pinfo{padding:1.5rem;}
+.pnum{font-family:'JetBrains Mono',monospace;font-size:.65rem;color:var(--dim);letter-spacing:.1em;margin-bottom:.35rem;}
+.pname{font-weight:700;font-size:1rem;margin-bottom:.45rem;color:var(--text);}
+.pdesc{font-size:.82rem;color:var(--muted);line-height:1.6;margin-bottom:.9rem;}
+.ptags{display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:.9rem;}
+.ptag{font-family:'JetBrains Mono',monospace;font-size:.67rem;padding:.2rem .6rem;border-radius:4px;border:1px solid;}
+.ptag.b{background:rgba(59,130,246,.06);border-color:rgba(59,130,246,.2);color:var(--blue2);}
+.ptag.g{background:rgba(16,185,129,.06);border-color:rgba(16,185,129,.2);color:var(--green2);}
+.ptag.p{background:rgba(139,92,246,.06);border-color:rgba(139,92,246,.2);color:var(--purple2);}
+.dlbtn{display:block;width:100%;text-align:center;padding:.65rem;border-radius:8px;font-size:.85rem;font-weight:600;text-decoration:none;transition:all .3s;font-family:'Space Grotesk',sans-serif;letter-spacing:.01em;}
+.dlbtn:hover{transform:translateY(-2px);}
+.dl1{background:linear-gradient(90deg,#1D4ED8,#3B82F6);color:white;box-shadow:0 4px 15px rgba(59,130,246,.25);}
+.dl1:hover{box-shadow:0 8px 25px rgba(59,130,246,.45);}
+.dl2{background:linear-gradient(90deg,#065F46,#10B981);color:white;box-shadow:0 4px 15px rgba(16,185,129,.25);}
+.dl2:hover{box-shadow:0 8px 25px rgba(16,185,129,.45);}
+.dl3{background:linear-gradient(90deg,#4C1D95,#8B5CF6);color:white;box-shadow:0 4px 15px rgba(139,92,246,.25);}
+.dl3:hover{box-shadow:0 8px 25px rgba(139,92,246,.45);}
+
+/* EXPERIENCE */
+.exp-wrap{background:var(--bg2);border:1px solid var(--border);border-radius:16px;padding:2.5rem;margin-top:2.5rem;position:relative;overflow:hidden;}
+.exp-wrap::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--blue),var(--purple),var(--pink),var(--teal),var(--green));}
+.exp-grid{display:grid;grid-template-columns:1fr 2fr;gap:3rem;}
+.exp-co{font-family:'Space Grotesk',sans-serif;font-size:2rem;font-weight:700;background:linear-gradient(90deg,var(--blue2),var(--purple2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:.2rem;}
+.exp-role{font-family:'JetBrains Mono',monospace;font-size:.85rem;color:var(--blue2);margin-bottom:.6rem;}
+.exp-date{display:inline-block;font-family:'JetBrains Mono',monospace;background:rgba(59,130,246,.08);border:1px solid rgba(59,130,246,.2);color:var(--blue2);font-size:.72rem;padding:.25rem .8rem;border-radius:4px;margin-bottom:1.5rem;}
+.exp-box{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:1.25rem;}
+.exp-box-num{font-family:'JetBrains Mono',monospace;font-size:2rem;font-weight:600;color:var(--blue2);}
+.exp-box-lbl{font-size:.72rem;color:var(--muted);margin-top:.2rem;}
+.exp-cert{margin-top:1rem;background:rgba(139,92,246,.06);border:1px solid rgba(139,92,246,.2);border-radius:8px;padding:.9rem;}
+.exp-cert-title{font-family:'JetBrains Mono',monospace;font-size:.72rem;color:var(--purple2);margin-bottom:.3rem;}
+.exp-cert-name{font-size:.88rem;font-weight:600;color:var(--text);}
+.exp-cert-sub{font-size:.78rem;color:var(--muted);}
+.exp-sec{font-family:'JetBrains Mono',monospace;font-size:.68rem;color:var(--dim);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.6rem;margin-top:1.25rem;}
+.exp-sec:first-child{margin-top:0;}
+.exp-list{list-style:none;}
+.exp-list li{padding:.5rem 0;border-bottom:1px solid var(--border);font-size:.88rem;color:var(--muted);display:flex;gap:.75rem;align-items:flex-start;transition:color .2s;}
+.exp-list li:hover{color:var(--text);}
+.exp-list li:last-child{border:none;}
+.exp-list li::before{content:'>';font-family:'JetBrains Mono',monospace;color:var(--blue);flex-shrink:0;font-size:.8rem;margin-top:.15rem;}
+.tools-row{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.75rem;}
+
+/* CONTACT */
+.contact-wrap{background:var(--bg2);border:1px solid var(--border);border-radius:16px;padding:2.5rem;position:relative;overflow:hidden;}
+.contact-wrap::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--blue),var(--purple),var(--pink),var(--teal),var(--green));}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;margin-top:1.5rem;}
+.avail{display:inline-flex;align-items:center;gap:.5rem;background:rgba(16,185,129,.06);border:1px solid rgba(16,185,129,.2);color:var(--green2);font-size:.8rem;padding:.4rem .9rem;border-radius:20px;margin-bottom:1.5rem;font-family:'JetBrains Mono',monospace;}
+.avail-dot{width:7px;height:7px;background:var(--green2);border-radius:50%;animation:pg 2s infinite;}
+@keyframes pg{0%,100%{box-shadow:0 0 0 0 rgba(52,211,153,.4);}50%{box-shadow:0 0 0 5px rgba(52,211,153,0);}}
+.citem{display:flex;align-items:center;gap:.85rem;background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:.85rem 1.1rem;margin-bottom:.65rem;transition:all .3s;}
+.citem:hover{border-color:rgba(59,130,246,.3);transform:translateX(4px);}
+.cicon{width:36px;height:36px;background:rgba(59,130,246,.08);border:1px solid rgba(59,130,246,.15);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:.95rem;flex-shrink:0;}
+.clbl{font-family:'JetBrains Mono',monospace;font-size:.65rem;color:var(--dim);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.12rem;}
+.cval{font-size:.87rem;color:var(--text);font-weight:500;}
+.link-title{font-weight:600;font-size:1.1rem;margin-bottom:.4rem;}
+.link-sub{font-size:.85rem;color:var(--muted);margin-bottom:1.25rem;line-height:1.6;}
+.clinks{display:flex;flex-direction:column;gap:.65rem;}
+.clink{display:flex;align-items:center;gap:.75rem;padding:.85rem 1.1rem;border-radius:8px;text-decoration:none;font-weight:500;font-size:.875rem;border:1px solid;transition:all .3s;font-family:'Space Grotesk',sans-serif;}
+.clink:hover{transform:translateY(-3px);}
+.cl1{background:rgba(59,130,246,.06);border-color:rgba(59,130,246,.2);color:var(--blue2);}
+.cl1:hover{background:rgba(59,130,246,.12);box-shadow:0 8px 20px rgba(59,130,246,.15);}
+.cl2{background:rgba(16,185,129,.06);border-color:rgba(16,185,129,.2);color:var(--green2);}
+.cl2:hover{background:rgba(16,185,129,.12);box-shadow:0 8px 20px rgba(16,185,129,.15);}
+.cl3{background:rgba(6,182,212,.06);border-color:rgba(6,182,212,.2);color:var(--teal2);}
+.cl3:hover{background:rgba(6,182,212,.12);box-shadow:0 8px 20px rgba(6,182,212,.15);}
+
+footer{background:var(--bg2);border-top:1px solid var(--border);text-align:center;padding:1.75rem;position:relative;z-index:1;}
+.foot-text{font-family:'JetBrains Mono',monospace;font-size:.78rem;color:var(--dim);}
+.foot-text span{color:var(--blue2);}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease;}
+.reveal.visible{opacity:1;transform:none;}
+
+@media(max-width:768px){
+  .hero{grid-template-columns:1fr;}
+  .hero-right{display:none;}
+  .hero-left{padding:3rem 2rem;}
+  .hero-name{font-size:2.8rem;}
+  .skills-grid,.portfolio-grid{grid-template-columns:1fr;}
+  .exp-grid,.contact-grid{grid-template-columns:1fr;}
+  .nav-links{display:none;}
+}
+</style>
+</head>
+<body>
+<div class="orbs"><div class="orb o1"></div><div class="orb o2"></div><div class="orb o3"></div><div class="orb o4"></div></div>
+
+<nav>
+  <div class="logo"><span class="logo-bracket">{</span>Debasis | WFM Analyst<span class="logo-bracket">}</span></div>
+  <ul class="nav-links">
+    <li><a href="#skills">skills</a></li>
+    <li><a href="#portfolio">portfolio</a></li>
+    <li><a href="#experience">experience</a></li>
+    <li><a href="#contact">contact</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">hire_me()</a>
+</nav>
+
+<section class="hero">
+  <div class="hero-left">
+    <div class="code-tag">// data_analyst.py — open for freelance projects</div>
+    <h1 class="hero-name">
+      <span class="n1">Debasis Saha</span>
+      <span class="n2">Data Analyst</span>
+    </h1>
+    <div class="hero-role">$ <span id="typing"></span><span class="cursor">█</span></div>
+    <div class="hero-badges">
+      <span class="badge b">Python</span>
+      <span class="badge p">Power BI</span>
+      <span class="badge g">SQL / MySQL</span>
+      <span class="badge t">Tableau</span>
+      <span class="badge pk">Excel</span>
+      <span class="badge a">Coding Ninjas ✓</span>
+    </div>
+    <p class="hero-desc">Transforming raw data into actionable insights through clean dashboards, EDA reports, and visual storytelling — certified Data Analyst with 2+ years of real business analytics experience at Concentrix.</p>
+    <div class="hero-btns">
+      <a href="#portfolio" class="btn-p">View Projects</a>
+      <a href="#contact" class="btn-o">Let's Connect</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="terminal">
+      <div class="term-header">
+        <div class="term-dot td1"></div><div class="term-dot td2"></div><div class="term-dot td3"></div>
+        <span class="term-title">analysis.py — debasis_saha</span>
+      </div>
+      <div class="term-body">
+        <span class="t-line"><span class="t-keyword">import</span> <span class="t-fn">pandas</span> <span class="t-keyword">as</span> <span class="t-var">pd</span></span>
+        <span class="t-line"><span class="t-keyword">import</span> <span class="t-fn">matplotlib.pyplot</span> <span class="t-keyword">as</span> <span class="t-var">plt</span></span>
+        <span class="t-line"><span class="t-keyword">from</span> <span class="t-fn">sklearn</span> <span class="t-keyword">import</span> <span class="t-var">preprocessing</span></span>
+        <span class="t-line">&nbsp;</span>
+        <span class="t-line"><span class="t-comment"># Load & analyze dataset</span></span>
+        <span class="t-line"><span class="t-var">df</span> = <span class="t-fn">pd.read_csv</span>(<span class="t-str">'sales_2024.csv'</span>)</span>
+        <span class="t-line"><span class="t-var">df</span>.<span class="t-fn">dropna</span>().<span class="t-fn">describe</span>()</span>
+        <span class="t-line">&nbsp;</span>
+        <span class="t-line"><span class="t-comment"># Revenue by region</span></span>
+        <span class="t-line"><span class="t-var">result</span> = <span class="t-var">df</span>.<span class="t-fn">groupby</span>(<span class="t-str">'region'</span>)[<span class="t-str">'revenue'</span>]</span>
+        <span class="t-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.<span class="t-fn">agg</span>([<span class="t-str">'sum'</span>,<span class="t-str">'mean'</span>,<span class="t-str">'count'</span>])</span>
+        <span class="t-line">&nbsp;</span>
+        <span class="t-line"><span class="t-out">✓ Total Revenue:  $692,000</span></span>
+        <span class="t-line"><span class="t-out">✓ Profit Margin:  29.97%</span></span>
+        <span class="t-line"><span class="t-out">✓ Best Region:    North</span></span>
+        <span class="t-line"><span class="t-out">✓ Top Product:    Laptop</span></span>
+      </div>
+      <div class="term-stats">
+        <div class="ts ts1"><div class="ts-val">2+</div><div class="ts-lbl">Years Experience</div></div>
+        <div class="ts ts2"><div class="ts-val">3</div><div class="ts-lbl">Projects Built</div></div>
+        <div class="ts ts3"><div class="ts-val">5</div><div class="ts-lbl">Tools Mastered</div></div>
+        <div class="ts ts4"><div class="ts-val">CN</div><div class="ts-lbl">Certified Analyst</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="skills-bg" id="skills">
+  <div class="container">
+    <div class="sec-eyebrow reveal">// skills.json</div>
+    <h2 class="sec-title reveal">Technical <span>Skills</span></h2>
+    <p class="sec-sub reveal">Full data analytics stack from raw data extraction to interactive dashboards.</p>
+    <div class="skills-grid">
+      <div class="skill-card sk1 reveal"><div class="skill-icon">🐍</div><div class="skill-title">Python Analytics</div><div class="skill-desc">Data manipulation, EDA, and visualization using Pandas, NumPy, Matplotlib, and Seaborn.</div><div class="skill-tags"><span class="stag">Pandas</span><span class="stag">NumPy</span><span class="stag">Matplotlib</span><span class="stag">Seaborn</span></div></div>
+      <div class="skill-card sk2 reveal"><div class="skill-icon">📊</div><div class="skill-title">Power BI & Tableau</div><div class="skill-desc">Interactive dashboards, DAX formulas, data modeling, and business intelligence reporting.</div><div class="skill-tags"><span class="stag">DAX</span><span class="stag">Power Query</span><span class="stag">Tableau</span><span class="stag">Dashboards</span></div></div>
+      <div class="skill-card sk3 reveal"><div class="skill-icon">🗄️</div><div class="skill-title">SQL & MySQL</div><div class="skill-desc">Complex queries, joins, aggregations, stored procedures, and database performance optimization.</div><div class="skill-tags"><span class="stag">MySQL</span><span class="stag">Joins</span><span class="stag">Aggregations</span><span class="stag">Subqueries</span></div></div>
+      <div class="skill-card sk4 reveal"><div class="skill-icon">📈</div><div class="skill-title">Excel Advanced</div><div class="skill-desc">Dynamic dashboards, pivot tables, advanced formulas, conditional formatting, and VBA automation.</div><div class="skill-tags"><span class="stag">Pivot Tables</span><span class="stag">VLOOKUP</span><span class="stag">Dashboards</span><span class="stag">Charts</span></div></div>
+      <div class="skill-card sk5 reveal"><div class="skill-icon">🔍</div><div class="skill-title">Data Wrangling</div><div class="skill-desc">Cleaning messy datasets, handling nulls, outlier detection, and feature engineering for analysis.</div><div class="skill-tags"><span class="stag">Data Cleaning</span><span class="stag">EDA</span><span class="stag">Outliers</span><span class="stag">Preprocessing</span></div></div>
+      <div class="skill-card sk6 reveal"><div class="skill-icon">💡</div><div class="skill-title">Business Analytics</div><div class="skill-desc">KPI tracking, SLA reporting, WFM analytics, and operations reporting from 2+ years at Concentrix.</div><div class="skill-tags"><span class="stag">KPI</span><span class="stag">SLA</span><span class="stag">WFM</span><span class="stag">Reporting</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="portfolio">
+  <div class="container">
+    <div class="sec-eyebrow reveal">// portfolio.projects</div>
+    <h2 class="sec-title reveal">Featured <span>Projects</span></h2>
+    <p class="sec-sub reveal">Three real-world data analytics projects built with Python, SQL, and Excel.</p>
+    <div class="portfolio-grid">
+      <div class="pcard pp1 reveal">
+        <div class="pthumb"><div class="pthumb-grid"></div><div class="pthumb-icon">📊</div><div class="pthumb-chip">Excel · 2 Sheets</div></div>
+        <div class="pinfo">
+          <div class="pnum">PROJECT_01.xlsx</div>
+          <div class="pname">Sales Performance Dashboard</div>
+          <div class="pdesc">Full 2024 sales analytics with revenue, profit, regional breakdown, top products, and monthly trend charts. Built with 120+ real data rows and live Excel formulas.</div>
+          <div class="ptags"><span class="ptag b">Excel</span><span class="ptag b">Dashboard</span><span class="ptag b">KPI</span><span class="ptag b">Charts</span></div>
+          <a href="https://analystdeba.github.io/P4_Sales_Dashboard.xlsx" class="dlbtn dl1">⬇ Download Project</a>
+        </div>
+      </div>
+      <div class="pcard pp2 reveal">
+        <div class="pthumb"><div class="pthumb-grid"></div><div class="pthumb-icon">🗄️</div><div class="pthumb-chip">SQL · Excel</div></div>
+        <div class="pinfo">
+          <div class="pnum">PROJECT_02.xlsx</div>
+          <div class="pname">SQL E-Commerce Analysis</div>
+          <div class="pdesc">Complete SQL data analysis with 4 complex queries — top products, monthly trends, customer segmentation, and regional performance. Results visualized with charts.</div>
+          <div class="ptags"><span class="ptag g">SQL</span><span class="ptag g">MySQL</span><span class="ptag g">Analysis</span><span class="ptag g">Segmentation</span></div>
+          <a href="https://analystdeba.github.io/P5_SQL_Analysis.xlsx" class="dlbtn dl2">⬇ Download Project</a>
+        </div>
+      </div>
+      <div class="pcard pp3 reveal">
+        <div class="pthumb"><div class="pthumb-grid"></div><div class="pthumb-icon">🐍</div><div class="pthumb-chip">Python · Matplotlib</div></div>
+        <div class="pinfo">
+          <div class="pnum">PROJECT_03.png</div>
+          <div class="pname">Python EDA Dashboard</div>
+          <div class="pdesc">9-panel analytics dashboard built with Python, Pandas, Matplotlib & Seaborn. Covers revenue trends, heatmaps, scatter plots, customer growth, and cumulative analysis.</div>
+          <div class="ptags"><span class="ptag p">Python</span><span class="ptag p">Pandas</span><span class="ptag p">Seaborn</span><span class="ptag p">EDA</span></div>
+          <a href="https://analystdeba.github.io/P6_Python_EDA_Dashboard.png" target="_blank" class="dlbtn dl3">👁 View Dashboard</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="experience" style="background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
+  <div class="container">
+    <div class="sec-eyebrow reveal">// experience.json</div>
+    <h2 class="sec-title reveal">Work <span>Experience</span></h2>
+    <div class="exp-wrap reveal">
+      <div class="exp-grid">
+        <div>
+          <div class="exp-co">Concentrix</div>
+          <div class="exp-role">Workforce Management Analyst</div>
+          <div class="exp-date">May 2023 — Present</div>
+          <div class="exp-box"><div class="exp-box-num">2+</div><div class="exp-box-lbl">Years hands-on analytics in a live, high-volume call center environment</div></div>
+          <div class="exp-cert">
+            <div class="exp-cert-title">// certification</div>
+            <div class="exp-cert-name">Data Analyst Certification</div>
+            <div class="exp-cert-sub">Coding Ninjas · Python · SQL · Power BI · Excel</div>
+          </div>
+        </div>
+        <div>
+          <div class="exp-sec">Key Responsibilities</div>
+          <ul class="exp-list">
+            <li>Built Excel & Power BI dashboards for SLA, AHT, and KPI reporting</li>
+            <li>Performed data extraction and analysis using MySQL for WFM reports</li>
+            <li>Developed weekly & monthly staffing forecasts with Python-ready models</li>
+            <li>Tracked and visualized call center KPIs for management reporting</li>
+            <li>Automated reporting workflows reducing manual effort by 40%</li>
+            <li>Presented data insights to operations and senior management teams</li>
+          </ul>
+          <div class="exp-sec">Tech Stack</div>
+          <div class="tools-row">
+            <span class="badge b">Python</span>
+            <span class="badge p">Power BI</span>
+            <span class="badge g">MySQL</span>
+            <span class="badge t">Tableau</span>
+            <span class="badge pk">Excel</span>
+            <span class="badge a">Google Sheets</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="container">
+    <div class="sec-eyebrow reveal">// contact.send()</div>
+    <h2 class="sec-title reveal">Let's <span>Connect</span></h2>
+    <div class="contact-wrap reveal">
+      <div class="contact-grid">
+        <div>
+          <div class="avail"><div class="avail-dot"></div>available_for_projects = True</div>
+          <div class="citem"><div class="cicon">📧</div><div><div class="clbl">Email</div><div class="cval">debasis.saha024@gmail.com</div></div></div>
+          <div class="citem"><div class="cicon">📍</div><div><div class="clbl">Location</div><div class="cval">Bengaluru, India · Remote Available</div></div></div>
+          <div class="citem"><div class="cicon">⚡</div><div><div class="clbl">Response Time</div><div class="cval">Within 24 hours</div></div></div>
+        </div>
+        <div>
+          <div class="link-title">Find Me On</div>
+          <div class="link-sub">Hire me on Upwork or Fiverr for data analysis, dashboards, Python EDA, or SQL projects.</div>
+          <div class="clinks">
+            <a href="https://www.upwork.com/freelancers/~01e08007b19ce69eb0" target="_blank" class="clink cl1">💼 Hire me on Upwork</a>
+            <a href="https://www.fiverr.com/sellers/analyst_deba/edit" target="_blank" class="clink cl2">🟢 Order on Fiverr</a>
+            <a href="https://www.linkedin.com/in/debasis-saha-8b99766a/" target="_blank" class="clink cl3">🔗 Connect on LinkedIn</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer><div class="foot-text">© 2026 <span>Debasis Saha</span> · Data Analyst · Bengaluru, India · Built with Python · Power BI · SQL · Excel</div></footer>
+
+<script>
+// Typing effect
+const roles=['Python · Pandas · NumPy','Power BI · Tableau','SQL · MySQL · Data','Excel · Dashboards · KPI'];
+let ri=0,ci=0,del=false;
+const el=document.getElementById('typing');
+setInterval(()=>{
+  const t=roles[ri];
+  if(!del){el.textContent=t.slice(0,++ci);if(ci===t.length){del=true;setTimeout(()=>{},1800);}}
+  else{el.textContent=t.slice(0,--ci);if(ci===0){del=false;ri=(ri+1)%roles.length;}}
+},90);
+
+// Scroll reveal
+const obs=new IntersectionObserver((entries)=>{
+  entries.forEach((e,i)=>{if(e.isIntersecting)setTimeout(()=>e.target.classList.add('visible'),i*90);});
+},{threshold:0.08});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+// Floating particles
+const pc=document.createElement('div');
+pc.style.cssText='position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden;';
+document.body.appendChild(pc);
+['#3B82F6','#8B5CF6','#EC4899','#10B981','#06B6D4','#F59E0B'].forEach(color=>{
+  for(let i=0;i<4;i++){
+    const p=document.createElement('div');
+    const size=Math.random()*2+1;
+    p.style.cssText=`position:absolute;width:${size}px;height:${size}px;background:${color};border-radius:50%;left:${Math.random()*100}%;animation:particleUp ${Math.random()*15+10}s linear ${Math.random()*10}s infinite;opacity:${Math.random()*0.4+0.1};`;
+    pc.appendChild(p);
+  }
+});
+const style=document.createElement('style');
+style.textContent='@keyframes particleUp{0%{transform:translateY(100vh);opacity:0;}10%{opacity:1;}90%{opacity:1;}100%{transform:translateY(-100px);opacity:0;}}';
+document.head.appendChild(style);
+</script>
+</body>
+</html>
