@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Debasis Saha | WFM Analyst Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#1F4E79;--blue:#2E75B6;--lb:#BDD7EE;
+  --green:#375623;--lg:#E2EFDA;
+  --amber:#843C0C;--la:#FCE4D6;
+  --pink:#E91E8C;--purple:#7C3AED;--teal:#0891B2;--orange:#EA580C;
+  --bg:#0A0F1E;--card:#111827;--card2:#1a2235;
+  --text:#F1F5F9;--muted:#94A3B8;--border:#1E293B;
+  --white:#fff;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);font-size:16px;line-height:1.7;overflow-x:hidden;}
+
+/* ANIMATED BG */
+.bg-orbs{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;overflow:hidden;}
+.orb{position:absolute;border-radius:50%;filter:blur(80px);animation:orbFloat 8s ease-in-out infinite;}
+.orb1{width:400px;height:400px;background:rgba(124,58,237,0.15);top:-100px;left:-100px;animation-delay:0s;}
+.orb2{width:350px;height:350px;background:rgba(8,145,178,0.12);top:30%;right:-100px;animation-delay:2s;}
+.orb3{width:300px;height:300px;background:rgba(233,30,140,0.1);bottom:10%;left:20%;animation-delay:4s;}
+.orb4{width:250px;height:250px;background:rgba(46,117,182,0.15);bottom:-50px;right:20%;animation-delay:1s;}
+@keyframes orbFloat{0%,100%{transform:translateY(0) scale(1);}50%{transform:translateY(-30px) scale(1.05);}}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:65px;background:rgba(10,15,30,0.85);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,0.06);}
+.nav-logo{font-family:'Syne',sans-serif;font-size:1.1rem;font-weight:700;background:linear-gradient(135deg,#60A5FA,#A78BFA,#F472B6);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.nav-links{display:flex;gap:2rem;list-style:none;}
+.nav-links a{text-decoration:none;color:var(--muted);font-size:.875rem;font-weight:500;transition:color .2s;position:relative;}
+.nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:2px;background:linear-gradient(90deg,#60A5FA,#A78BFA);transition:width .3s;}
+.nav-links a:hover{color:var(--text);}
+.nav-links a:hover::after{width:100%;}
+.nav-cta{background:linear-gradient(135deg,#2563EB,#7C3AED);color:white;border:none;padding:.5rem 1.5rem;border-radius:25px;font-family:'DM Sans',sans-serif;font-size:.875rem;cursor:pointer;text-decoration:none;font-weight:500;transition:all .3s;box-shadow:0 4px 15px rgba(124,58,237,0.3);}
+.nav-cta:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(124,58,237,0.5);}
+
+/* HERO */
+.hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;padding-top:65px;position:relative;z-index:1;}
+.hero-left{padding:5rem 4rem;display:flex;flex-direction:column;justify-content:center;}
+.hero-tag{display:inline-flex;align-items:center;gap:.5rem;background:rgba(96,165,250,0.1);border:1px solid rgba(96,165,250,0.2);color:#60A5FA;font-size:.75rem;letter-spacing:.1em;padding:.4rem 1rem;border-radius:20px;margin-bottom:1.5rem;width:fit-content;animation:fadeUp .6s ease forwards;}
+.tag-dot{width:8px;height:8px;background:#60A5FA;border-radius:50%;animation:pulse 2s infinite;}
+@keyframes pulse{0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(96,165,250,0.4);}50%{opacity:.7;box-shadow:0 0 0 6px rgba(96,165,250,0);}}
+.hero-name{font-family:'Syne',sans-serif;font-size:3.8rem;line-height:1.05;font-weight:800;margin-bottom:.75rem;animation:fadeUp .6s .1s ease both;}
+.hero-name .line1{display:block;color:var(--text);}
+.hero-name .line2{display:block;background:linear-gradient(135deg,#60A5FA,#A78BFA,#F472B6);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.hero-name .line3{display:block;color:var(--text);}
+.hero-title{font-size:1rem;color:var(--muted);font-weight:300;margin-bottom:2rem;animation:fadeUp .6s .2s ease both;}
+.hero-title span{color:#60A5FA;}
+.hero-desc{color:var(--muted);font-size:.92rem;line-height:1.9;margin-bottom:2.5rem;max-width:440px;animation:fadeUp .6s .3s ease both;}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap;animation:fadeUp .6s .4s ease both;}
+.btn-primary{background:linear-gradient(135deg,#2563EB,#7C3AED);color:white;padding:.8rem 2rem;border-radius:25px;text-decoration:none;font-weight:500;font-size:.9rem;transition:all .3s;box-shadow:0 4px 20px rgba(124,58,237,0.3);}
+.btn-primary:hover{transform:translateY(-3px);box-shadow:0 8px 30px rgba(124,58,237,0.5);}
+.btn-outline{border:1px solid rgba(255,255,255,.15);color:var(--text);padding:.8rem 2rem;border-radius:25px;text-decoration:none;font-weight:500;font-size:.9rem;transition:all .3s;backdrop-filter:blur(10px);}
+.btn-outline:hover{border-color:rgba(96,165,250,.5);color:#60A5FA;transform:translateY(-3px);}
+
+.hero-right{padding:5rem 3rem;display:flex;flex-direction:column;justify-content:center;animation:fadeUp .6s .2s ease both;}
+.stats-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:2rem;}
+.stat-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:1.5rem;position:relative;overflow:hidden;transition:transform .3s,border-color .3s;}
+.stat-card:hover{transform:translateY(-4px);}
+.stat-card.s1:hover{border-color:#60A5FA;}
+.stat-card.s2:hover{border-color:#A78BFA;}
+.stat-card.s3:hover{border-color:#F472B6;}
+.stat-card.s4:hover{border-color:#34D399;}
+.stat-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;}
+.stat-card.s1::before{background:linear-gradient(90deg,#2563EB,#60A5FA);}
+.stat-card.s2::before{background:linear-gradient(90deg,#7C3AED,#A78BFA);}
+.stat-card.s3::before{background:linear-gradient(90deg,#DB2777,#F472B6);}
+.stat-card.s4::before{background:linear-gradient(90deg,#059669,#34D399);}
+.stat-num{font-family:'Syne',sans-serif;font-size:2.5rem;font-weight:800;line-height:1;margin-bottom:.3rem;}
+.stat-card.s1 .stat-num{color:#60A5FA;}
+.stat-card.s2 .stat-num{color:#A78BFA;}
+.stat-card.s3 .stat-num{color:#F472B6;}
+.stat-card.s4 .stat-num{color:#34D399;}
+.stat-label{font-size:.78rem;color:var(--muted);font-weight:500;}
+
+.tools-label{font-size:.7rem;color:var(--muted);font-weight:600;letter-spacing:.1em;margin-bottom:.75rem;}
+.tools-chips{display:flex;flex-wrap:wrap;gap:.5rem;}
+.chip{font-size:.78rem;padding:.35rem .9rem;border-radius:20px;font-weight:500;border:1px solid;transition:all .2s;cursor:default;}
+.chip:hover{transform:translateY(-2px);}
+.chip.blue{background:rgba(37,99,235,.1);border-color:rgba(37,99,235,.3);color:#60A5FA;}
+.chip.purple{background:rgba(124,58,237,.1);border-color:rgba(124,58,237,.3);color:#A78BFA;}
+.chip.pink{background:rgba(219,39,119,.1);border-color:rgba(219,39,119,.3);color:#F472B6;}
+.chip.teal{background:rgba(8,145,178,.1);border-color:rgba(8,145,178,.3);color:#22D3EE;}
+.chip.green{background:rgba(5,150,105,.1);border-color:rgba(5,150,105,.3);color:#34D399;}
+
+/* SECTIONS */
+section{padding:6rem 0;position:relative;z-index:1;}
+.container{max-width:1100px;margin:0 auto;padding:0 2rem;}
+.section-label{font-size:.7rem;letter-spacing:.15em;color:#60A5FA;font-weight:600;margin-bottom:.75rem;text-transform:uppercase;}
+.section-title{font-family:'Syne',sans-serif;font-size:2.5rem;font-weight:800;color:var(--text);margin-bottom:1rem;line-height:1.15;}
+.section-title span{background:linear-gradient(135deg,#60A5FA,#A78BFA);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.section-sub{color:var(--muted);max-width:500px;font-size:.92rem;}
+
+/* SERVICES */
+.services{background:transparent;}
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-top:3rem;}
+.service-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:1.75rem;transition:all .3s;position:relative;overflow:hidden;cursor:default;}
+.service-card::before{content:'';position:absolute;inset:0;opacity:0;transition:opacity .3s;border-radius:16px;}
+.service-card:hover{transform:translateY(-6px);}
+.service-card:hover::before{opacity:1;}
+.sc1::before{background:linear-gradient(135deg,rgba(37,99,235,.08),rgba(96,165,250,.04));}
+.sc2::before{background:linear-gradient(135deg,rgba(124,58,237,.08),rgba(167,139,250,.04));}
+.sc3::before{background:linear-gradient(135deg,rgba(219,39,119,.08),rgba(244,114,182,.04));}
+.sc4::before{background:linear-gradient(135deg,rgba(8,145,178,.08),rgba(34,211,238,.04));}
+.sc5::before{background:linear-gradient(135deg,rgba(5,150,105,.08),rgba(52,211,153,.04));}
+.sc6::before{background:linear-gradient(135deg,rgba(234,88,12,.08),rgba(251,146,60,.04));}
+.sc1:hover{border-color:rgba(96,165,250,.3);}
+.sc2:hover{border-color:rgba(167,139,250,.3);}
+.sc3:hover{border-color:rgba(244,114,182,.3);}
+.sc4:hover{border-color:rgba(34,211,238,.3);}
+.sc5:hover{border-color:rgba(52,211,153,.3);}
+.sc6:hover{border-color:rgba(251,146,60,.3);}
+.service-icon{font-size:2rem;margin-bottom:1rem;display:block;}
+.service-name{font-family:'Syne',sans-serif;font-weight:600;font-size:1rem;margin-bottom:.5rem;color:var(--text);}
+.service-desc{font-size:.85rem;color:var(--muted);line-height:1.7;}
+.service-tag{display:inline-block;font-size:.7rem;padding:.2rem .65rem;border-radius:10px;font-weight:500;margin-top:.75rem;}
+.sc1 .service-tag{background:rgba(96,165,250,.1);color:#60A5FA;}
+.sc2 .service-tag{background:rgba(167,139,250,.1);color:#A78BFA;}
+.sc3 .service-tag{background:rgba(244,114,182,.1);color:#F472B6;}
+.sc4 .service-tag{background:rgba(34,211,238,.1);color:#22D3EE;}
+.sc5 .service-tag{background:rgba(52,211,153,.1);color:#34D399;}
+.sc6 .service-tag{background:rgba(251,146,60,.1);color:#FB923C;}
+
+/* PORTFOLIO */
+.portfolio-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3rem;}
+.portfolio-card{background:var(--card);border:1px solid var(--border);border-radius:20px;overflow:hidden;transition:all .3s;}
+.portfolio-card:hover{transform:translateY(-8px);}
+.pc1:hover{border-color:rgba(96,165,250,.4);box-shadow:0 20px 40px rgba(37,99,235,.15);}
+.pc2:hover{border-color:rgba(52,211,153,.4);box-shadow:0 20px 40px rgba(5,150,105,.15);}
+.pc3:hover{border-color:rgba(251,146,60,.4);box-shadow:0 20px 40px rgba(234,88,12,.15);}
+.portfolio-thumb{height:180px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;}
+.pc1 .portfolio-thumb{background:linear-gradient(135deg,#1E3A5F,#2563EB);}
+.pc2 .portfolio-thumb{background:linear-gradient(135deg,#1A3A24,#059669);}
+.pc3 .portfolio-thumb{background:linear-gradient(135deg,#4A1A05,#EA580C);}
+.thumb-bg{position:absolute;inset:0;opacity:.1;}
+.pc1 .thumb-bg{background:repeating-linear-gradient(45deg,#60A5FA 0,#60A5FA 1px,transparent 0,transparent 50%);background-size:20px 20px;}
+.pc2 .thumb-bg{background:repeating-linear-gradient(45deg,#34D399 0,#34D399 1px,transparent 0,transparent 50%);background-size:20px 20px;}
+.pc3 .thumb-bg{background:repeating-linear-gradient(45deg,#FB923C 0,#FB923C 1px,transparent 0,transparent 50%);background-size:20px 20px;}
+.thumb-icon{font-size:3.5rem;position:relative;z-index:1;filter:drop-shadow(0 4px 12px rgba(0,0,0,.3));transition:transform .3s;}
+.portfolio-card:hover .thumb-icon{transform:scale(1.1) translateY(-4px);}
+.thumb-label{position:absolute;bottom:.75rem;right:.75rem;background:rgba(0,0,0,.4);backdrop-filter:blur(8px);color:white;font-size:.7rem;padding:.25rem .7rem;border-radius:10px;font-weight:500;border:1px solid rgba(255,255,255,.1);}
+.portfolio-info{padding:1.5rem;}
+.portfolio-num{font-size:.68rem;color:var(--muted);font-weight:600;letter-spacing:.1em;margin-bottom:.4rem;}
+.portfolio-name{font-family:'Syne',sans-serif;font-weight:700;font-size:1.05rem;margin-bottom:.5rem;color:var(--text);}
+.portfolio-desc{font-size:.82rem;color:var(--muted);line-height:1.6;margin-bottom:1rem;}
+.portfolio-tags{display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:1rem;}
+.ptag{font-size:.68rem;padding:.22rem .65rem;border-radius:10px;font-weight:500;}
+.ptag.blue{background:rgba(96,165,250,.1);color:#60A5FA;border:1px solid rgba(96,165,250,.2);}
+.ptag.green{background:rgba(52,211,153,.1);color:#34D399;border:1px solid rgba(52,211,153,.2);}
+.ptag.orange{background:rgba(251,146,60,.1);color:#FB923C;border:1px solid rgba(251,146,60,.2);}
+.dl-btn{display:block;width:100%;text-align:center;padding:.7rem 1rem;border-radius:12px;font-size:.875rem;font-weight:500;text-decoration:none;transition:all .3s;position:relative;overflow:hidden;}
+.dl-btn::before{content:'';position:absolute;inset:0;opacity:0;transition:opacity .3s;}
+.dl-btn:hover::before{opacity:1;}
+.dl-btn:hover{transform:translateY(-2px);}
+.dl-blue{background:linear-gradient(135deg,#1E40AF,#2563EB);color:white;box-shadow:0 4px 15px rgba(37,99,235,.3);}
+.dl-blue:hover{box-shadow:0 8px 25px rgba(37,99,235,.5);}
+.dl-green{background:linear-gradient(135deg,#065F46,#059669);color:white;box-shadow:0 4px 15px rgba(5,150,105,.3);}
+.dl-green:hover{box-shadow:0 8px 25px rgba(5,150,105,.5);}
+.dl-orange{background:linear-gradient(135deg,#9A3412,#EA580C);color:white;box-shadow:0 4px 15px rgba(234,88,12,.3);}
+.dl-orange:hover{box-shadow:0 8px 25px rgba(234,88,12,.5);}
+
+/* EXPERIENCE */
+.exp-card{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:2.5rem;margin-top:3rem;display:grid;grid-template-columns:1fr 2fr;gap:3rem;position:relative;overflow:hidden;}
+.exp-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#2563EB,#7C3AED,#DB2777,#0891B2);}
+.exp-company{font-family:'Syne',sans-serif;font-size:2rem;font-weight:800;background:linear-gradient(135deg,#60A5FA,#A78BFA);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:.25rem;}
+.exp-role{font-size:.95rem;color:#60A5FA;font-weight:500;margin-bottom:.75rem;}
+.exp-date{display:inline-block;background:rgba(96,165,250,.1);border:1px solid rgba(96,165,250,.2);color:#60A5FA;font-size:.75rem;font-weight:500;padding:.3rem .9rem;border-radius:20px;margin-bottom:1.5rem;}
+.exp-highlight{background:linear-gradient(135deg,#1E3A5F,#1E1B4B);border:1px solid rgba(96,165,250,.2);border-radius:12px;padding:1.25rem;}
+.exp-highlight-num{font-family:'Syne',sans-serif;font-size:2.2rem;font-weight:800;color:#60A5FA;}
+.exp-highlight-label{font-size:.75rem;color:var(--muted);margin-top:.2rem;}
+.exp-section-title{font-size:.7rem;font-weight:600;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.75rem;margin-top:1.5rem;}
+.exp-section-title:first-child{margin-top:0;}
+.exp-list{list-style:none;}
+.exp-list li{padding:.55rem 0;border-bottom:1px solid var(--border);font-size:.88rem;color:var(--muted);display:flex;align-items:flex-start;gap:.75rem;transition:color .2s;}
+.exp-list li:hover{color:var(--text);}
+.exp-list li:last-child{border-bottom:none;}
+.exp-list li::before{content:'→';color:#60A5FA;font-weight:600;flex-shrink:0;}
+.tools-used{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.75rem;}
+
+/* CONTACT */
+.contact-section{background:transparent;}
+.contact-inner{background:var(--card);border:1px solid var(--border);border-radius:24px;padding:3rem;position:relative;overflow:hidden;}
+.contact-inner::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#2563EB,#7C3AED,#DB2777,#0891B2,#059669);}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;margin-top:2rem;align-items:start;}
+.contact-items{display:flex;flex-direction:column;gap:.75rem;}
+.contact-item{display:flex;align-items:center;gap:1rem;background:var(--card2);border:1px solid var(--border);border-radius:12px;padding:.9rem 1.25rem;transition:all .3s;}
+.contact-item:hover{border-color:rgba(96,165,250,.3);transform:translateX(4px);}
+.contact-icon{width:38px;height:38px;background:rgba(96,165,250,.1);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;}
+.contact-label{font-size:.7rem;color:var(--muted);font-weight:600;letter-spacing:.08em;text-transform:uppercase;margin-bottom:.15rem;}
+.contact-val{font-size:.88rem;color:var(--text);font-weight:500;}
+.available-badge{display:inline-flex;align-items:center;gap:.5rem;background:rgba(52,211,153,.08);border:1px solid rgba(52,211,153,.2);color:#34D399;font-size:.8rem;padding:.5rem 1rem;border-radius:20px;margin-bottom:1.5rem;}
+.available-dot{width:8px;height:8px;background:#34D399;border-radius:50%;animation:pulse2 2s infinite;}
+@keyframes pulse2{0%,100%{box-shadow:0 0 0 0 rgba(52,211,153,.4);}50%{box-shadow:0 0 0 6px rgba(52,211,153,0);}}
+.cta-box-title{font-family:'Syne',sans-serif;font-size:1.35rem;font-weight:700;color:var(--text);margin-bottom:.5rem;}
+.cta-desc{color:var(--muted);font-size:.88rem;margin-bottom:1.5rem;line-height:1.7;}
+.cta-links{display:flex;flex-direction:column;gap:.75rem;}
+.cta-link{display:flex;align-items:center;gap:.75rem;padding:.9rem 1.25rem;border-radius:12px;text-decoration:none;font-weight:500;font-size:.875rem;transition:all .3s;border:1px solid var(--border);}
+.cta-link:hover{transform:translateY(-3px);}
+.cl1{background:rgba(37,99,235,.1);color:#60A5FA;border-color:rgba(37,99,235,.2);}
+.cl1:hover{background:rgba(37,99,235,.2);border-color:rgba(96,165,250,.4);box-shadow:0 8px 20px rgba(37,99,235,.2);}
+.cl2{background:rgba(5,150,105,.1);color:#34D399;border-color:rgba(5,150,105,.2);}
+.cl2:hover{background:rgba(5,150,105,.2);border-color:rgba(52,211,153,.4);box-shadow:0 8px 20px rgba(5,150,105,.2);}
+.cl3{background:rgba(8,145,178,.1);color:#22D3EE;border-color:rgba(8,145,178,.2);}
+.cl3:hover{background:rgba(8,145,178,.2);border-color:rgba(34,211,238,.4);box-shadow:0 8px 20px rgba(8,145,178,.2);}
+
+/* FLOATING PARTICLES */
+.particles{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;}
+.particle{position:absolute;width:2px;height:2px;border-radius:50%;animation:particleFloat linear infinite;}
+@keyframes particleFloat{0%{transform:translateY(100vh) rotate(0deg);opacity:0;}10%{opacity:1;}90%{opacity:1;}100%{transform:translateY(-100px) rotate(720deg);opacity:0;}}
+
+/* SCROLL ANIMATIONS */
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .7s ease,transform .7s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+@keyframes fadeUp{from{opacity:0;transform:translateY(25px);}to{opacity:1;transform:translateY(0);}}
+
+footer{background:var(--card);border-top:1px solid var(--border);text-align:center;padding:1.75rem;font-size:.8rem;color:var(--muted);position:relative;z-index:1;}
+footer span{background:linear-gradient(135deg,#60A5FA,#A78BFA);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;font-weight:500;}
+
+@media(max-width:768px){
+  .hero{grid-template-columns:1fr;}
+  .hero-left{padding:3rem 2rem;}
+  .hero-name{font-size:2.8rem;}
+  .hero-right{padding:2rem;}
+  .services-grid,.portfolio-grid{grid-template-columns:1fr;}
+  .exp-card{grid-template-columns:1fr;}
+  .contact-grid{grid-template-columns:1fr;}
+  .nav-links{display:none;}
+}
+</style>
+</head>
+<body>
+
+<div class="bg-orbs">
+  <div class="orb orb1"></div>
+  <div class="orb orb2"></div>
+  <div class="orb orb3"></div>
+  <div class="orb orb4"></div>
+</div>
+
+<nav>
+  <div class="nav-logo">Debasis | WFM Analyst</div>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#portfolio">Portfolio</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Hire Me</a>
+</nav>
+
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-tag"><div class="tag-dot"></div>Available for Freelance Projects</div>
+    <h1 class="hero-name">
+      <span class="line1">Workforce</span>
+      <span class="line2">Management</span>
+      <span class="line3">Analyst</span>
+    </h1>
+    <p class="hero-title">Forecasting <span>·</span> Scheduling <span>·</span> SLA Reporting</p>
+    <p class="hero-desc">Helping call centers and BPOs make smarter staffing decisions through accurate forecasting, clean dashboards, and practical WFM solutions — backed by real daily experience at Concentrix.</p>
+    <div class="hero-btns">
+      <a href="#portfolio" class="btn-primary">View My Work</a>
+      <a href="#contact" class="btn-outline">Get in Touch</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="stats-grid">
+      <div class="stat-card s1"><div class="stat-num">2+</div><div class="stat-label">Years WFM Experience</div></div>
+      <div class="stat-card s2"><div class="stat-num">3</div><div class="stat-label">Portfolio Projects</div></div>
+      <div class="stat-card s3"><div class="stat-num">80%</div><div class="stat-label">SLA Target Expertise</div></div>
+      <div class="stat-card s4"><div class="stat-num">5+</div><div class="stat-label">Tools Mastered</div></div>
+    </div>
+    <div class="tools-label">TOOLS & EXPERTISE</div>
+    <div class="tools-chips">
+      <span class="chip blue">Microsoft Excel</span>
+      <span class="chip purple">Power BI</span>
+      <span class="chip teal">Google Sheets</span>
+      <span class="chip pink">MySQL</span>
+      <span class="chip green">Forecasting</span>
+      <span class="chip blue">SLA Reporting</span>
+      <span class="chip purple">Shift Scheduling</span>
+      <span class="chip teal">KPI Dashboards</span>
+    </div>
+  </div>
+</section>
+
+<section class="services" id="services">
+  <div class="container">
+    <div class="section-label reveal">What I Offer</div>
+    <h2 class="section-title reveal">My <span>Services</span></h2>
+    <p class="section-sub reveal">End-to-end WFM solutions for call centers and BPOs of all sizes.</p>
+    <div class="services-grid">
+      <div class="service-card sc1 reveal"><span class="service-icon">📅</span><div class="service-name">Staffing Forecast Models</div><div class="service-desc">Weekly & monthly capacity planning with dynamic Excel models. Auto-calculates required agents based on volume, AHT, shrinkage & occupancy.</div><span class="service-tag">Excel · Forecasting</span></div>
+      <div class="service-card sc2 reveal"><span class="service-icon">📊</span><div class="service-name">SLA & KPI Dashboards</div><div class="service-desc">Professional dashboards tracking SLA %, AHT, Abandonment Rate & Occupancy with trend indicators and management-ready charts.</div><span class="service-tag">Power BI · Excel</span></div>
+      <div class="service-card sc3 reveal"><span class="service-icon">🗓️</span><div class="service-name">Shift Schedule Tracker</div><div class="service-desc">Color-coded weekly rosters for your agent team with built-in coverage gap analysis — see understaffed days before the week begins.</div><span class="service-tag">Scheduling · Roster</span></div>
+      <div class="service-card sc4 reveal"><span class="service-icon">🗄️</span><div class="service-name">MySQL Data Extraction</div><div class="service-desc">Pull and clean raw call center data directly from MySQL databases — complete end-to-end from raw database to finished dashboard.</div><span class="service-tag">MySQL · SQL</span></div>
+      <div class="service-card sc5 reveal"><span class="service-icon">📈</span><div class="service-name">Capacity Planning Reports</div><div class="service-desc">Long-term headcount planning and monthly management reports that help leadership make informed hiring and scheduling decisions.</div><span class="service-tag">Reporting · Planning</span></div>
+      <div class="service-card sc6 reveal"><span class="service-icon">⚙️</span><div class="service-name">WFM Process Setup</div><div class="service-desc">Help startups and small BPOs build their WFM processes from scratch — templates, reporting structure, and operational workflows.</div><span class="service-tag">Consulting · Setup</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="portfolio" style="padding:6rem 0;position:relative;z-index:1;">
+  <div class="container">
+    <div class="section-label reveal">My Work</div>
+    <h2 class="section-title reveal">Portfolio <span>Projects</span></h2>
+    <p class="section-sub reveal">Three ready-to-use WFM tools built with real call center data and live Excel formulas.</p>
+    <div class="portfolio-grid">
+      <div class="portfolio-card pc1 reveal">
+        <div class="portfolio-thumb"><div class="thumb-bg"></div><div class="thumb-icon">📅</div><div class="thumb-label">Excel · 4 Sheets</div></div>
+        <div class="portfolio-info">
+          <div class="portfolio-num">PROJECT 01</div>
+          <div class="portfolio-name">Staffing Forecast Model</div>
+          <div class="portfolio-desc">Dynamic weekly & monthly staffing model. Auto-calculates required agents from volume, AHT, shrinkage & occupancy inputs.</div>
+          <div class="portfolio-tags"><span class="ptag blue">Forecasting</span><span class="ptag blue">Excel</span><span class="ptag blue">Capacity Planning</span></div>
+          <a href="https://analystdeba.github.io/P1_Staffing_Forecast_Model.xlsx" class="dl-btn dl-blue">⬇ Download File</a>
+        </div>
+      </div>
+      <div class="portfolio-card pc2 reveal">
+        <div class="portfolio-thumb"><div class="thumb-bg"></div><div class="thumb-icon">📊</div><div class="thumb-label">Excel · Power BI</div></div>
+        <div class="portfolio-info">
+          <div class="portfolio-num">PROJECT 02</div>
+          <div class="portfolio-name">SLA & KPI Dashboard</div>
+          <div class="portfolio-desc">12-month KPI tracker with SLA %, AHT, Abandonment & Occupancy. Color-coded status flags and trend indicators included.</div>
+          <div class="portfolio-tags"><span class="ptag green">SLA Tracking</span><span class="ptag green">Power BI</span><span class="ptag green">KPI Reporting</span></div>
+          <a href="https://analystdeba.github.io/P2_SLA_KPI_Dashboard.xlsx" class="dl-btn dl-green">⬇ Download File</a>
+        </div>
+      </div>
+      <div class="portfolio-card pc3 reveal">
+        <div class="portfolio-thumb"><div class="thumb-bg"></div><div class="thumb-icon">🗓️</div><div class="thumb-label">Excel · 2 Sheets</div></div>
+        <div class="portfolio-info">
+          <div class="portfolio-num">PROJECT 03</div>
+          <div class="portfolio-name">Shift Schedule Tracker</div>
+          <div class="portfolio-desc">Color-coded weekly roster for 10+ agents with M/A/N/O shifts, auto coverage count, gap analysis, and summary chart.</div>
+          <div class="portfolio-tags"><span class="ptag orange">Scheduling</span><span class="ptag orange">Roster</span><span class="ptag orange">Gap Analysis</span></div>
+          <a href="https://analystdeba.github.io/P3_Shift_Schedule_Tracker.xlsx" class="dl-btn dl-orange">⬇ Download File</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="experience" id="experience">
+  <div class="container">
+    <div class="section-label reveal">Background</div>
+    <h2 class="section-title reveal">Work <span>Experience</span></h2>
+    <div class="exp-card reveal">
+      <div>
+        <div class="exp-company">Concentrix</div>
+        <div class="exp-role">Workforce Management Analyst</div>
+        <div class="exp-date">May 2023 — Present</div>
+        <div class="exp-highlight">
+          <div class="exp-highlight-num">2+</div>
+          <div class="exp-highlight-label">Years hands-on WFM experience in a live, high-volume call center</div>
+        </div>
+      </div>
+      <div>
+        <div class="exp-section-title">Key Responsibilities</div>
+        <ul class="exp-list">
+          <li>Weekly & monthly staffing forecasts based on volume, AHT & shrinkage</li>
+          <li>Agent shift scheduling across morning, afternoon & night operations</li>
+          <li>SLA, AHT, Abandonment Rate & Occupancy tracking and reporting</li>
+          <li>Intraday real-time monitoring and staffing adjustments</li>
+          <li>Power BI and Excel dashboards for management reporting</li>
+          <li>MySQL data extraction and cleaning for WFM reports</li>
+        </ul>
+        <div class="exp-section-title">Tools Used</div>
+        <div class="tools-used">
+          <span class="chip blue">Microsoft Excel</span>
+          <span class="chip purple">Power BI</span>
+          <span class="chip teal">Google Sheets</span>
+          <span class="chip pink">MySQL</span>
+          <span class="chip green">WFM Platforms</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact-section" id="contact">
+  <div class="container">
+    <div class="section-label reveal">Get in Touch</div>
+    <h2 class="section-title reveal">Let's Work <span>Together</span></h2>
+    <div class="contact-inner reveal">
+      <div class="contact-grid">
+        <div>
+          <div class="available-badge"><div class="available-dot"></div>Available for new projects</div>
+          <div class="contact-items">
+            <div class="contact-item"><div class="contact-icon">📧</div><div><div class="contact-label">Email</div><div class="contact-val">debasis.saha024@gmail.com</div></div></div>
+            <div class="contact-item"><div class="contact-icon">📍</div><div><div class="contact-label">Location</div><div class="contact-val">Bengaluru, India · Remote Available</div></div></div>
+            <div class="contact-item"><div class="contact-icon">⚡</div><div><div class="contact-label">Response Time</div><div class="contact-val">Within 24 hours</div></div></div>
+          </div>
+        </div>
+        <div>
+          <div class="cta-box-title">Find Me On</div>
+          <div class="cta-desc">Hire me directly on Upwork or Fiverr for your WFM reporting, forecasting, or scheduling project.</div>
+          <div class="cta-links">
+            <a href="https://www.upwork.com/freelancers/~01e08007b19ce69eb0" target="_blank" class="cta-link cl1">💼 Hire me on Upwork</a>
+            <a href="https://www.fiverr.com/sellers/analyst_deba/edit" target="_blank" class="cta-link cl2">🟢 Order on Fiverr</a>
+            <a href="https://www.linkedin.com/in/debasis-saha-8b99766a/" target="_blank" class="cta-link cl3">🔗 Connect on LinkedIn</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer><p>© 2026 <span>Debasis Saha</span> · WFM Analyst Portfolio · Bengaluru, India · Built for freelance clients worldwide</p></footer>
+
+<script>
+// Scroll reveal
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry, i) => {
+    if (entry.isIntersecting) {
+      setTimeout(() => entry.target.classList.add('visible'), i * 80);
+    }
+  });
+}, { threshold: 0.1 });
+reveals.forEach(el => observer.observe(el));
+
+// Floating particles
+const pc = document.querySelector('.particles') || (() => {
+  const d = document.createElement('div');
+  d.className = 'particles';
+  document.body.appendChild(d);
+  return d;
+})();
+const colors = ['#60A5FA','#A78BFA','#F472B6','#34D399','#22D3EE','#FB923C'];
+for (let i = 0; i < 25; i++) {
+  const p = document.createElement('div');
+  p.className = 'particle';
+  p.style.cssText = `left:${Math.random()*100}%;width:${Math.random()*3+1}px;height:${Math.random()*3+1}px;background:${colors[Math.floor(Math.random()*colors.length)]};animation-duration:${Math.random()*15+10}s;animation-delay:${Math.random()*10}s;opacity:${Math.random()*.5+.1};`;
+  pc.appendChild(p);
+}
+
+// Typing effect on hero
+const titles = ['Forecasting Expert', 'SLA Specialist', 'WFM Analyst', 'Data Reporter'];
+let ti = 0, ci = 0, deleting = false;
+const el = document.querySelector('.hero-title');
+if (el) {
+  setInterval(() => {
+    const t = titles[ti];
+    if (!deleting) {
+      el.innerHTML = t.slice(0, ci+1) + '<span style="color:#60A5FA;animation:none;">|</span>';
+      ci++;
+      if (ci === t.length) { deleting = true; setTimeout(()=>{}, 1500); }
+    } else {
+      el.innerHTML = t.slice(0, ci-1) + '<span style="color:#60A5FA;">|</span>';
+      ci--;
+      if (ci === 0) { deleting = false; ti = (ti+1) % titles.length; }
+    }
+  }, 100);
+}
+</script>
+</body>
+</html>
